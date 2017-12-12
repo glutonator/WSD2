@@ -104,8 +104,8 @@ public class GUIApp extends Application {
         newVehicleMaxSpeedField.setFocusTraversable(false);
 
         Button btnAddVehicle = new Button("New vehicle");
-        String temp = "temp";
-        //CarsApplication.createAgent(temp, Agent2.class.getName(), args9);
+
+
 
         btnAddVehicle.setOnMouseClicked(event -> {
             String speedStr = newVehicleSpeedField.getText();
@@ -123,6 +123,48 @@ public class GUIApp extends Application {
         newVehicleBox.getChildren().addAll(newVehicleNameField, newVehicleSpeedField, newVehicleMaxSpeedField,  btnAddVehicle);
 
         rootView.getChildren().add(newVehicleBox);
+
+        //nowe
+        VBox newSignBox = new VBox(10);
+        newSignBox.setLayoutX(600);
+        newSignBox.setLayoutY(50);
+
+        TextField newSignNameField = new TextField();
+        newSignNameField.setPromptText("Name");
+        newSignNameField.setFocusTraversable(false);
+
+        TextField newSignYBeginField = new TextField();
+        newSignYBeginField.setPromptText("Y Begin");
+        newSignYBeginField.setFocusTraversable(false);
+
+        TextField newSignYEndField = new TextField();
+        newSignYEndField.setPromptText("Y End");
+        newSignYEndField.setFocusTraversable(false);
+
+        TextField newSignLimitMaxSpeedField = new TextField();
+        newSignLimitMaxSpeedField.setPromptText("LimitMaxSpeed");
+        newSignLimitMaxSpeedField.setFocusTraversable(false);
+
+        Button btnAddSign = new Button("New Sign");
+        btnAddSign.setOnMouseClicked(event2 -> {
+            String name_sign = newSignNameField.getText();
+            String Y_begin_str = newSignYBeginField.getText();
+            String Y_end_str = newSignYEndField.getText();
+            String limitMaxSpeed_str = newSignLimitMaxSpeedField.getText();
+
+            if (Y_begin_str != null && !Y_begin_str.isEmpty() && Y_begin_str.matches("[0-9]+")
+                    && Y_end_str != null && !Y_end_str.isEmpty() && Y_end_str.matches("[0-9]+")
+                    && limitMaxSpeed_str != null && !limitMaxSpeed_str.isEmpty() && limitMaxSpeed_str.matches("[0-9]+")
+                    && name_sign != null && !name_sign.isEmpty()) {
+
+                String[] args = {"y_begin:" + Y_begin_str, "y_end:" + Y_end_str, "maxSpeed:" + limitMaxSpeed_str};
+                CarsApplication.createAgent(name_sign, Sign.class.getName(), args);
+            }
+        });
+        newSignBox.getChildren().addAll(newSignNameField, newSignYBeginField, newSignYEndField,newSignLimitMaxSpeedField ,  btnAddSign);
+        rootView.getChildren().add(newSignBox);
+        //
+
         scene.setFill(Color.LIGHTGREY);
         drawRoad();
         drawMiddleLine();
@@ -132,15 +174,18 @@ public class GUIApp extends Application {
         stage.show();
 
         //"y_begin: "+ y_begin+ "y_end: "+ y_end +", Limit_MaxSpeed: "
-        String[] args9={"y_begin:" + "100", "y_end:" + "200", "maxSpeed:"+"70"};
-        for(String i : args9) {
-            System.out.println(i);
-        }
-        CarsApplication.createAgent("NNNZNAK", Sign.class.getName(), args9);
+//        String[] args9={"y_begin:" + "100", "y_end:" + "200", "maxSpeed:"+"70"};
+//        for(String i : args9) {
+//            System.out.println(i);
+//        }
+        //CarsApplication.createAgent("NNNZNAK", Sign.class.getName(), args9);
 
     }
 
     public static void main(String[] args) {
         launch(args);
+        //String[] args9={"y_begin:" + "100", "y_end:" + "200", "maxSpeed:"+"70"};
+        //CarsApplication.createAgent("NNNZNAK", Sign.class.getName(), args9);
+
     }
 }

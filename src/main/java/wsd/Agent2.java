@@ -132,7 +132,19 @@ public class Agent2 extends Agent {
             Long zaObokNum = 9999999L;
             VehicleParameters obok = null;
 
-            //TODO: znlesc najblizsze mnie samochody i zobaczyć czy mogę zmienić na pas pierwszy
+            //tutaj for mo calej mapie znakow
+            //interesuje nas znak o pozycji Y najblizszej naszej
+
+            for (Map.Entry<AID, SignParameters> entry : allSignsParams.entrySet()) {
+                AID aid = entry.getKey();
+                SignParameters param = entry.getValue();
+
+                //tutaj porownywanie Y i zapisywanie tego najblizszego
+
+            }
+
+
+                //TODO: znlesc najblizsze mnie samochody i zobaczyć czy mogę zmienić na pas pierwszy
             for (Map.Entry<AID, VehicleParameters> entry : otherCarsParams.entrySet()) {
 
                 AID aid = entry.getKey();
