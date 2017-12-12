@@ -134,15 +134,42 @@ public class Agent2 extends Agent {
 
             //tutaj for mo calej mapie znakow
             //interesuje nas znak o pozycji Y najblizszej naszej
+            SignParameters closedSign=new SignParameters(0L, 9999999L,9999999L );
+            Long diffmin = -9999999L;
 
+            //przyjete zalozenie - zakresy znakow nie moga na siebie nachodzic
             for (Map.Entry<AID, SignParameters> entry : allSignsParams.entrySet()) {
                 AID aid = entry.getKey();
                 SignParameters param = entry.getValue();
+                Long diff = param.getY_begin() - myPArameters.getY();
 
-                //tutaj porownywanie Y i zapisywanie tego najblizszego
+                if(diff<=0) {
+                    //jesli mniejsze od 0 lub rowne 0 to znak jest juz miniety przez samochod = obowiazuje
+                    //im wartosc bardziej blizsza 0 tym bardzieje aktualny znak - czyli potrzeba sprawdzać ktory znak ma najwikeszy diff
+                    //ten bedzie obowiazywac
+                    if(diff>diffmin) {
+                        Long diffToEnd = param.getY_end() - myPArameters.getY();
+
+                        if(diffToEnd>0) {
+                            //jesli koniec znaku jest jeszcze nie miniety
+                            diffmin = diff;
+                            closedSign = param;
+                        }
+                        else {
+                            //znak jest miniety nie obowiazuje
+                            //closedSign bez zmian, domyslny znak wciaz obowiazuje
+                        }
+                    }
+                }
+                else {
+                    //jesli wieksze od 0 to znak jest jeszcze nie miniety przez samochod = nie obowiazuje
+                    //zostaje poprzedni
+                    //trzeba zainicjowac jakims znakeim domyslnym na wypadek gdyby wszystkie znaki byly przed
+
+                }
 
             }
-
+            System.out.println("dnae znaku najblizszego" + closedSign.getY_begin() +"  "+closedSign.getY_end()+ "  "+closedSign.getLimit_max_speed());
 
                 //TODO: znlesc najblizsze mnie samochody i zobaczyć czy mogę zmienić na pas pierwszy
             for (Map.Entry<AID, VehicleParameters> entry : otherCarsParams.entrySet()) {
