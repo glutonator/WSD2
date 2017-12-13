@@ -55,14 +55,18 @@ public class GUIApp extends Application {
         return signSymbols.stream().filter(vs -> vs.getAid().equals(aid)).findFirst().orElse(null);
     }
 
-    public static void onSetupSign(AID aid, Long y, Long y2) {
-        SignSymbol symbol = new SignSymbol(aid, y, y2);
+    public static void onSetupSign(AID aid, Long y, Long y2, Long limit_max_speed) {
+        SignSymbol symbol = new SignSymbol(aid, y, y2, limit_max_speed);
         signSymbols.add(symbol);
         Platform.runLater(() -> {
             rootView.getChildren().add(symbol.getLine());
             symbol.getLine().toFront();
             rootView.getChildren().add(symbol.getLine2());
             symbol.getLine2().toFront();
+            rootView.getChildren().add(symbol.getText());
+            symbol.getText().toFront();
+            rootView.getChildren().add(symbol.getText2());
+            symbol.getText2().toFront();
         });
     }
 
@@ -133,7 +137,7 @@ public class GUIApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         //
-        System.out.print("test");
+        //System.out.print("test");
         //
 
         Scene scene = new Scene(rootView,800, 600);

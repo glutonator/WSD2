@@ -72,7 +72,7 @@ public class Sign extends Agent {
         addBehaviour(new SendParametersSign(this,100));
 
         //GUIApp.onSetupSign(getAID(), myPArameters.getX());
-        GUIApp.onSetupSign(getAID(),myPArameters.getY_begin(),myPArameters.getY_end());
+        GUIApp.onSetupSign(getAID(),myPArameters.getY_begin(),myPArameters.getY_end(),myPArameters.getLimit_max_speed());
 
     }
 

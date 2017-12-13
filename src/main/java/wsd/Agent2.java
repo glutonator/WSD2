@@ -180,8 +180,8 @@ public class Agent2 extends Agent {
 
             }
             myPArameters.set_max_speed_of_sign(closedSign.getLimit_max_speed());
-            System.out.println("dnae znaku najblizszego" + closedSign.getY_begin() +"  "+closedSign.getY_end()+ "  "+closedSign.getLimit_max_speed());
-            System.out.println("dnae znaku najblizszego" + closedprzedSign.getY_begin() +"  "+closedprzedSign.getY_end()+ "  "+closedprzedSign.getLimit_max_speed());
+            System.out.println("dane znaku najblizszego za autem o nazwie  " + getName()+ "pamrametry:" +  closedSign.getY_begin() +"  "+closedSign.getY_end()+ "  "+closedSign.getLimit_max_speed());
+            System.out.println("dane znaku najblizszego przed autem  " + getName() + "pamrametry:" + closedprzedSign.getY_begin() +"  "+closedprzedSign.getY_end()+ "  "+closedprzedSign.getLimit_max_speed());
 
             Boolean signCloseBy = false;
             Long minimal_distant = 100L;
@@ -280,8 +280,6 @@ public class Agent2 extends Agent {
 
             if (!onLastLane) {
                 if(przed == null ||canMoveOn){
-                    System.out.println(signCloseBy);
-                    System.out.println(closedprzedSign.getY_begin());
                     if (signCloseBy==true) {
                         if (myPArameters.getSpeed() >= closedprzedSign.getLimit_max_speed()) {
                             //jesli trzeba zwolinic bo aktualna predkosc jest wieksza od tej na zblizajacym sie znaku
@@ -460,8 +458,6 @@ public class Agent2 extends Agent {
                         SignParameters v = (SignParameters) action;
                         mySignParameters = v;
                         //System.out.println("Wartosci dla Znaku: "+v.getY_begin()+" "+v.getY_end()+" "+v.getLimit_max_speed());
-                        //System.out.println("dziala");
-                        //System.out.println("Wartosci dla Agenta1: "+v.getMax_speed()+" "+v.getX()+" "+v.getSpeed());
                         allSignsParams.put(msg.getSender(), v);
                     }
                 } catch (Codec.CodecException | OntologyException e) {
