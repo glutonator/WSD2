@@ -107,13 +107,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VehicleParameters.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="VehicleParameters.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ontology/VehicleParameters.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="659">
+              <caret line="72" column="34" lean-forward="false" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#751#752#0" expanded="true" />
+                <element signature="e#793#794#0" expanded="true" />
+                <element signature="e#858#859#0" expanded="true" />
+                <element signature="e#915#916#0" expanded="true" />
+                <element signature="e#2726#2727#0" expanded="true" />
+                <element signature="e#2769#2770#0" expanded="true" />
+                <element signature="e#2806#2807#0" expanded="true" />
+                <element signature="e#2842#2843#0" expanded="true" />
+                <element signature="e#2897#2898#0" expanded="true" />
+                <element signature="e#2947#2948#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -131,11 +141,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Agent2.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Agent2.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/wsd/Agent2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="212" column="37" lean-forward="false" selection-start-line="212" selection-start-column="25" selection-end-line="212" selection-end-column="37" />
+            <state relative-caret-position="217">
+              <caret line="314" column="32" lean-forward="true" selection-start-line="314" selection-start-column="32" selection-end-line="314" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -183,6 +193,7 @@
         <option value="$PROJECT_DIR$/src/main/java/ontology/SignParameters.java" />
         <option value="$PROJECT_DIR$/src/main/java/graphics/GUIApp.java" />
         <option value="$PROJECT_DIR$/src/main/java/wsd/Agent2.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ontology/VehicleParameters.java" />
       </list>
     </option>
   </component>
@@ -516,6 +527,16 @@
           <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#751#752#0" expanded="true" />
+            <element signature="e#793#794#0" expanded="true" />
+            <element signature="e#858#859#0" expanded="true" />
+            <element signature="e#915#916#0" expanded="true" />
+            <element signature="e#2726#2727#0" expanded="true" />
+            <element signature="e#2769#2770#0" expanded="true" />
+            <element signature="e#2806#2807#0" expanded="true" />
+            <element signature="e#2842#2843#0" expanded="true" />
+            <element signature="e#2897#2898#0" expanded="true" />
+            <element signature="e#2947#2948#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -591,6 +612,16 @@
           <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#751#752#0" expanded="true" />
+            <element signature="e#793#794#0" expanded="true" />
+            <element signature="e#858#859#0" expanded="true" />
+            <element signature="e#915#916#0" expanded="true" />
+            <element signature="e#2726#2727#0" expanded="true" />
+            <element signature="e#2769#2770#0" expanded="true" />
+            <element signature="e#2806#2807#0" expanded="true" />
+            <element signature="e#2842#2843#0" expanded="true" />
+            <element signature="e#2897#2898#0" expanded="true" />
+            <element signature="e#2947#2948#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -674,6 +705,16 @@
           <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#751#752#0" expanded="true" />
+            <element signature="e#793#794#0" expanded="true" />
+            <element signature="e#858#859#0" expanded="true" />
+            <element signature="e#915#916#0" expanded="true" />
+            <element signature="e#2726#2727#0" expanded="true" />
+            <element signature="e#2769#2770#0" expanded="true" />
+            <element signature="e#2806#2807#0" expanded="true" />
+            <element signature="e#2842#2843#0" expanded="true" />
+            <element signature="e#2897#2898#0" expanded="true" />
+            <element signature="e#2947#2948#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -803,22 +844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ontology/SignParameters.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="15" column="26" lean-forward="false" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#641#642#0" expanded="true" />
-            <element signature="e#669#670#0" expanded="true" />
-            <element signature="e#701#702#0" expanded="true" />
-            <element signature="e#732#733#0" expanded="true" />
-            <element signature="e#777#778#0" expanded="true" />
-            <element signature="e#817#818#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/wsd/Sign.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="580">
@@ -826,16 +851,6 @@
           <folding>
             <element signature="e#2774#2775#0" expanded="true" />
             <element signature="e#2814#2815#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/wsd/Agent2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="212" column="37" lean-forward="false" selection-start-line="212" selection-start-column="25" selection-end-line="212" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -852,8 +867,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ontology/VehicleParameters.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="659">
+          <caret line="72" column="34" lean-forward="false" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#751#752#0" expanded="true" />
+            <element signature="e#793#794#0" expanded="true" />
+            <element signature="e#858#859#0" expanded="true" />
+            <element signature="e#915#916#0" expanded="true" />
+            <element signature="e#2726#2727#0" expanded="true" />
+            <element signature="e#2769#2770#0" expanded="true" />
+            <element signature="e#2806#2807#0" expanded="true" />
+            <element signature="e#2842#2843#0" expanded="true" />
+            <element signature="e#2897#2898#0" expanded="true" />
+            <element signature="e#2947#2948#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ontology/SignParameters.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="15" column="26" lean-forward="false" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#641#642#0" expanded="true" />
+            <element signature="e#669#670#0" expanded="true" />
+            <element signature="e#701#702#0" expanded="true" />
+            <element signature="e#732#733#0" expanded="true" />
+            <element signature="e#777#778#0" expanded="true" />
+            <element signature="e#817#818#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/wsd/Agent2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="314" column="32" lean-forward="true" selection-start-line="314" selection-start-column="32" selection-end-line="314" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

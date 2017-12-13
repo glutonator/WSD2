@@ -10,6 +10,7 @@ public class VehicleParameters implements Concept {
     Long  _speed;
     Long _max_speed;
     Long _acceleration;
+    Long _max_speed_of_sign;
 
     public VehicleParameters(){
         this._x = 1L;
@@ -17,6 +18,7 @@ public class VehicleParameters implements Concept {
         this._speed = 50L;
         this._max_speed = 150L;
         this._acceleration=0L;
+        this._max_speed_of_sign=150L;
     }
 
     public VehicleParameters(Long speed, Long maxSpeed){
@@ -25,9 +27,16 @@ public class VehicleParameters implements Concept {
         this._speed = speed;
         this._max_speed = maxSpeed;
         this._acceleration=0L;
+        this._max_speed_of_sign=maxSpeed;
     }
-
-
+//nowe
+    public Long get_max_speed_of_sign() {
+        return  _max_speed_of_sign;
+    }
+    public void set_max_speed_of_sign(Long max_speed_of_sign ) {
+        this._max_speed_of_sign=max_speed_of_sign;
+    }
+//
     public Long getX() {
         return _x;
     }
@@ -52,24 +61,38 @@ public class VehicleParameters implements Concept {
         _y += _speed/interval;
     }
 
+//    public void setPercentageAcceler(Long percent){
+//        if(_speed == 0L){
+//            _speed += _max_speed*2/10;
+//        }
+//        _acceleration = _speed*percent/100;
+//    }
+    //
     public void setPercentageAcceler(Long percent){
         if(_speed == 0L){
-            _speed += _max_speed*2/10;
+            _speed += getMax_speed()*2/10;
         }
         _acceleration = _speed*percent/100;
     }
-
+    //
     public void addAcceleration(Long acc){
         _acceleration +=acc;
     }
 
+//    public void addPercentageAcceleration(Long percent){
+//        if(_speed == 0L){
+//            _speed += _max_speed*2/10;
+//        }
+//        _acceleration += _speed*percent/100;
+//    }
+    //
     public void addPercentageAcceleration(Long percent){
         if(_speed == 0L){
-            _speed += _max_speed*2/10;
+            _speed += getMax_speed()*2/10;
         }
         _acceleration += _speed*percent/100;
     }
-
+    //
     public Long getY() {
         return _y;
     }
@@ -86,9 +109,19 @@ public class VehicleParameters implements Concept {
         this._speed = speed;
     }
 
+//    public Long getMax_speed() {
+//        return _max_speed;
+//    }
+    //nowe
     public Long getMax_speed() {
-        return _max_speed;
-    }
+        if(_max_speed>_max_speed_of_sign) {
+            return _max_speed_of_sign;
+        }
+        else {
+            return _max_speed;
+        }
+}
+    //
 
     public void setMax_speed(Long max_speed) {
         this._max_speed = max_speed;

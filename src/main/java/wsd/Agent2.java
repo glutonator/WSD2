@@ -169,6 +169,7 @@ public class Agent2 extends Agent {
                 }
 
             }
+            myPArameters.set_max_speed_of_sign(closedSign.getLimit_max_speed());
             System.out.println("dnae znaku najblizszego" + closedSign.getY_begin() +"  "+closedSign.getY_end()+ "  "+closedSign.getLimit_max_speed());
 
                 //TODO: znlesc najblizsze mnie samochody i zobaczyć czy mogę zmienić na pas pierwszy
