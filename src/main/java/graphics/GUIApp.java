@@ -48,12 +48,50 @@ public class GUIApp extends Application {
         }
     }
 
+    //nowe
+    private static ArrayList<SignSymbol> signSymbols = new ArrayList<>();
+
+    private static SignSymbol findSymbolBySign(AID aid) {
+        return signSymbols.stream().filter(vs -> vs.getAid().equals(aid)).findFirst().orElse(null);
+    }
+
+    public static void onSetupSign(AID aid, Long y, Long y2) {
+        SignSymbol symbol = new SignSymbol(aid, y, y2);
+        signSymbols.add(symbol);
+        Platform.runLater(() -> {
+            rootView.getChildren().add(symbol.getLine());
+            symbol.getLine().toFront();
+            rootView.getChildren().add(symbol.getLine2());
+            symbol.getLine2().toFront();
+        });
+    }
+
+//    public static void onUpdateParametersSign(AID aid, Long x, Long y) {
+//        SignSymbol symbol = findSymbolBySign(aid);
+//        if (symbol != null) {
+//            Platform.runLater(() -> symbol.translate(x, y));
+//        }
+//    }
+
+    public static void onDeleteSign(AID aid) {
+        SignSymbol symbol = findSymbolBySign(aid);
+        if (symbol != null) {
+            Platform.runLater(() -> rootView.getChildren().remove(symbol.getLine()));
+        }
+    }
+    //
+
     static final Long ROAD_START_Y = 550L;
     static final Long ROAD_END_Y = 50L;
     static final double LANE_LEFT_X = 50.0;
     static final double LANE_RIGHT_X = 160.0;
     static final double ROAD_WIDTH = 210.0;
     static final double MIDDLE_LINE_WIDTH = 10.0;
+
+    static final double LANE_SIGN_X = LANE_LEFT_X+ROAD_WIDTH;
+    static final double SIGN_LINE_WIDTH =ROAD_WIDTH/8;
+
+
 
     private void drawRoad() {
         Rectangle roadRect = new Rectangle();
@@ -77,6 +115,19 @@ public class GUIApp extends Application {
         lineRect.setFill(Color.WHITE);
         lineRect.toFront();
         rootView.getChildren().add(lineRect);
+    }
+
+    private void drawSignLine() {
+        Rectangle roadRect = new Rectangle();
+        roadRect.setX(LANE_SIGN_X);
+        roadRect.setY(ROAD_END_Y);
+        roadRect.setHeight(ROAD_START_Y - ROAD_END_Y);
+        roadRect.setWidth(SIGN_LINE_WIDTH);
+        roadRect.setFill(Color.WHITE);
+        roadRect.setArcWidth(2.0);
+        roadRect.setArcHeight(2.0);
+        roadRect.toBack();
+        rootView.getChildren().add(roadRect);
     }
 
     @Override
@@ -168,24 +219,18 @@ public class GUIApp extends Application {
         scene.setFill(Color.LIGHTGREY);
         drawRoad();
         drawMiddleLine();
+        drawSignLine();
 
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
 
-        //"y_begin: "+ y_begin+ "y_end: "+ y_end +", Limit_MaxSpeed: "
-//        String[] args9={"y_begin:" + "100", "y_end:" + "200", "maxSpeed:"+"70"};
-//        for(String i : args9) {
-//            System.out.println(i);
-//        }
-        //CarsApplication.createAgent("NNNZNAK", Sign.class.getName(), args9);
+
 
     }
 
     public static void main(String[] args) {
         launch(args);
-        //String[] args9={"y_begin:" + "100", "y_end:" + "200", "maxSpeed:"+"70"};
-        //CarsApplication.createAgent("NNNZNAK", Sign.class.getName(), args9);
 
     }
 }

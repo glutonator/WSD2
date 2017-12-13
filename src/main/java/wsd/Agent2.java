@@ -134,8 +134,11 @@ public class Agent2 extends Agent {
 
             //tutaj for mo calej mapie znakow
             //interesuje nas znak o pozycji Y najblizszej naszej
-            SignParameters closedSign=new SignParameters(0L, 9999999L,9999999L );
-            Long diffmin = -9999999L;
+            SignParameters defaultSign = new SignParameters(0L, 9999999L,9999999L );
+            SignParameters closedSign=defaultSign;
+            SignParameters closedprzedSign=defaultSign;
+            Long diffminietySign = -9999999L;
+            Long diffprzedSign = 9999999L;
 
             //przyjete zalozenie - zakresy znakow nie moga na siebie nachodzic
             for (Map.Entry<AID, SignParameters> entry : allSignsParams.entrySet()) {
@@ -147,12 +150,12 @@ public class Agent2 extends Agent {
                     //jesli mniejsze od 0 lub rowne 0 to znak jest juz miniety przez samochod = obowiazuje
                     //im wartosc bardziej blizsza 0 tym bardzieje aktualny znak - czyli potrzeba sprawdzać ktory znak ma najwikeszy diff
                     //ten bedzie obowiazywac
-                    if(diff>diffmin) {
+                    if(diff>diffminietySign) {
                         Long diffToEnd = param.getY_end() - myPArameters.getY();
 
                         if(diffToEnd>0) {
                             //jesli koniec znaku jest jeszcze nie miniety
-                            diffmin = diff;
+                            diffminietySign = diff;
                             closedSign = param;
                         }
                         else {
@@ -165,12 +168,32 @@ public class Agent2 extends Agent {
                     //jesli wieksze od 0 to znak jest jeszcze nie miniety przez samochod = nie obowiazuje
                     //zostaje poprzedni
                     //trzeba zainicjowac jakims znakeim domyslnym na wypadek gdyby wszystkie znaki byly przed
-
+                    if(diff<diffprzedSign) {
+                        //jesli znak jest przed autem i blizej niz poprzedni zapisany to zapisz go
+                        diffprzedSign=diff;
+                        closedprzedSign = param;
+                    }
+                    else {
+                        //nothing
+                    }
                 }
 
             }
             myPArameters.set_max_speed_of_sign(closedSign.getLimit_max_speed());
             System.out.println("dnae znaku najblizszego" + closedSign.getY_begin() +"  "+closedSign.getY_end()+ "  "+closedSign.getLimit_max_speed());
+            System.out.println("dnae znaku najblizszego" + closedprzedSign.getY_begin() +"  "+closedprzedSign.getY_end()+ "  "+closedprzedSign.getLimit_max_speed());
+
+            Boolean signCloseBy = false;
+            Long minimal_distant = 100L;
+            //test czy znak jest wystarczajaco blisko by zaczac zwalniac
+            Long temp = closedprzedSign.getY_begin()-myPArameters.getY();
+            if((temp <minimal_distant)&&(temp >0)) {
+                //trzeba zaczac zwalniac
+                signCloseBy=true;
+            }
+            else {
+                //nie trzeba zwalniac
+            }
 
                 //TODO: znlesc najblizsze mnie samochody i zobaczyć czy mogę zmienić na pas pierwszy
             for (Map.Entry<AID, VehicleParameters> entry : otherCarsParams.entrySet()) {
@@ -257,20 +280,49 @@ public class Agent2 extends Agent {
 
             if (!onLastLane) {
                 if(przed == null ||canMoveOn){
+                    System.out.println(signCloseBy);
+                    System.out.println(closedprzedSign.getY_begin());
+                    if (signCloseBy==true) {
+                        if (myPArameters.getSpeed() >= closedprzedSign.getLimit_max_speed()) {
+                            //jesli trzeba zwolinic bo aktualna predkosc jest wieksza od tej na zblizajacym sie znaku
+                            myPArameters.addPercentageAcceleration(-10L);
+                            myPArameters.updateSpeed();
+                            myPArameters.updateY(timeInterval);
+                        }
+                        else {
+                            //dostosowywanie predkosi gdy jest przed znakiem
 
-                    if(myPArameters.getSpeed()>=myPArameters.getMax_speed()){
+                            myPArameters.setAcceleration(0L);
+                            if (myPArameters.getSpeed() < closedprzedSign.getLimit_max_speed()) {
+                                myPArameters.addPercentageAcceleration(10L);
+                                myPArameters.updateSpeed();
 
-                        myPArameters.setSpeed(myPArameters.getMax_speed());
-                        myPArameters.setAcceleration(0L);
-                        myPArameters.updateY(timeInterval);
+                                //myPArameters.setSpeed(myPArameters.getMax_speed());
+                                //myPArameters.setAcceleration(0L);
+                                myPArameters.updateY(timeInterval);
 
-                    }else{
-
-                        myPArameters.addPercentageAcceleration(10L);
-                        myPArameters.updateSpeed();
-                        myPArameters.updateY(timeInterval);
-
+                            }
+                            else {
+                                myPArameters.setAcceleration(0L);
+                                myPArameters.updateY(timeInterval);
+                            }
+                            //myPArameters.updateY(timeInterval);
+                        }
                     }
+                    else {
+
+                        if (myPArameters.getSpeed() >= myPArameters.getMax_speed()) {
+
+                            myPArameters.setSpeed(myPArameters.getMax_speed());
+                            myPArameters.setAcceleration(0L);
+                            myPArameters.updateY(timeInterval);
+
+                        } else {
+                                myPArameters.addPercentageAcceleration(10L);
+                                myPArameters.updateSpeed();
+                                myPArameters.updateY(timeInterval);
+                            }
+                        }
 
                 }else{
 

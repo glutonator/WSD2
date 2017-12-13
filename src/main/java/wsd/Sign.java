@@ -70,6 +70,10 @@ public class Sign extends Agent {
 
         myPArameters = new SignParameters(y_begin, y_end, Limit_MaxSpeed);
         addBehaviour(new SendParametersSign(this,100));
+
+        //GUIApp.onSetupSign(getAID(), myPArameters.getX());
+        GUIApp.onSetupSign(getAID(),myPArameters.getY_begin(),myPArameters.getY_end());
+
     }
 
 
@@ -93,7 +97,7 @@ public class Sign extends Agent {
             msg.addReceiver(rec);
             count++;
         }
-        System.out.println("qqqq  "+ count);
+        //System.out.println("qqqq  "+ count);
         msg.setLanguage(FIPANames.ContentLanguage.FIPA_SL0);
         msg.setOntology(ParametersOntology.NAME);
         try {
